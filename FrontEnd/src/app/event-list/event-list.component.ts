@@ -14,11 +14,18 @@ export class EventListComponent implements OnInit {
   // ticket : number;
   eventlist:object[];
 
+
+
   constructor(private api:APIService) { }
 
   ngOnInit() {
 
     this.api.getEventlist()
+            .subscribe(result=>this.eventlist = result);
+  }
+
+  buyTicket(id){
+    this.api.buyTicket(id)
             .subscribe(result=>this.eventlist = result);
   }
 

@@ -37,4 +37,19 @@ export class APIService {
   .map(result => result.json());
 }
 
+buyTicket(id:number){
+
+  let data = {
+    "id" : id,
+}
+
+
+let body = JSON.stringify(data);
+let headers = new Headers({"Content-type": "application/json"});
+let option = new RequestOptions({headers: headers});
+
+return this.http.post('http://localhost:8000/api/eventlist/buy',body,option)
+.map(result => result.json());
+}
+
 }

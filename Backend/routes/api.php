@@ -22,4 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' =>'eventlist'],function(){
   Route::get('','EventController@getEvent');
   Route::post('add','EventController@addEvent');
+  Route::post('buy','TransactionController@buyTicket');
 });

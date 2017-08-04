@@ -16,28 +16,26 @@ class TransactionController extends Controller
 
     }
 
-    public function buy(){
+    public function buyTicket(Request $request){
 
           DB::beginTransaction();
 
         try {
 
-            $eventid = $request->input('event_id');
-            $price = $request->input('price');
-            $date = $request->input('date');
-            $ticket = $request->input('ticket');
 
-              $elist = new Transaction;
-              $elist->name = $name;
-              $elist->price = $price;
-              $elist->date = $date;
-              $elist->ticket = $ticket;
-              $elist->save();
+      $trans = Transaction::where('ticket_id','=',$ticket_id)->first();
 
-        $transactionlist = Transaction::get();
+        $ticket_id = $request->input('ticket_id')
+
+    if (!empty($trans)) {
+
+        $t = new Transaction;
+        $t->ticket = -1;
+        $t->save();
+    }
 
           DB::commit();
-          return response()->json($transactionlist,201);
+          return response()->json($ticket_id,201);
         }
 
         catch (Exception $e) {
