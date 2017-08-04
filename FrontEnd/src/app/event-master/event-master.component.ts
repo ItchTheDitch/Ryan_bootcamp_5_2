@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { APIService } from '../services/api.service';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-event-master',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventMasterComponent implements OnInit {
 
-  constructor() { }
+  name : string;
+  price : number;
+  ticket : number;
+  date : string;
+  eventlist:object[];
+
+  constructor(private api:APIService) { }
 
   ngOnInit() {
   }
+
+  addEvent(){
+  this.api.addEvent(this.name, this.price,this.ticket,this.date)
+          .subscribe(result=>this.eventlist = result);
+
+  this.name = "";
+  this.price ;
+  this.ticket ;
+  this.date
+
+
+}
 
 }

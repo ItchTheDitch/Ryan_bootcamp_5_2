@@ -1,3 +1,24 @@
-<p>
-  event-list works!
-</p>
+<div class="row" style="margin:5%">
+  <div class="col-md-12">
+    <table class="table table-bordered table-striped  table1" >
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Ticket</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let e of this.eventlist let i of index"  >
+        <td>{{e.id}}</td>
+        <td>{{e.name}}</td>
+        <td>{{e.price}}</td>
+        <td>{{e.ticket}}</td>
+        <td>{{e.date}}</td>
+        <td>
+          <button class="btn btn-success" (click)="deleteUser(u.id)" >BUY</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
